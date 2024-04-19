@@ -1,6 +1,7 @@
 <script setup lang="ts">
+import type {WeatherData} from "~/types/WeatherData";
 
-const { data, pending, error } = useFetch(() => 'https://api.open-meteo.com/v1/forecast', {
+const { data: WeatherData, pending, error } = useFetch(() => 'https://api.open-meteo.com/v1/forecast', {
   query: {
     latitude: 52.52,
     longitude: 13.41,
@@ -13,7 +14,7 @@ const { data, pending, error } = useFetch(() => 'https://api.open-meteo.com/v1/f
 
 <template>
 <div>
-  {{ data }}
+  {{ WeatherData }}
 </div>
 </template>
 
