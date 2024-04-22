@@ -1,11 +1,15 @@
 <script setup lang="ts">
-import type {WeatherData} from "~/types/WeatherData";
-import type {WeatherDataDaily} from "~/types/WeatherDataDaily";
+import type {WeatherData, WeatherDataDaily} from "~/types/WeatherData";
+import type {WeatherForecastByDay} from "~/types/WeatherForecastByDay";
+import type {ComputedRef} from "vue";
 
-const { data: WeatherData, pending, error } = useFetch(() => 'https://api.open-meteo.com/v1/forecast', {
+const inputLatitude = ref(52.52);
+const inputLongitude = ref(13.41);
+
+const { data: weatherData, pending, error } = useFetch<WeatherData>(() => 'https://api.open-meteo.com/v1/forecast', {
   query: {
-    latitude: 52.52,
-    longitude: 13.41,
+    latitude: inputLatitude,
+    longitude: inputLongitude,
     current: 'temperature_2m,relative_humidity_2m,is_day,rain,showers,snowfall',
     daily: 'temperature_2m_max,temperature_2m_min,sunrise,sunset,daylight_duration,rain_sum,showers_sum',
     timezone: 'Europe/Berlin',
@@ -13,24 +17,55 @@ const { data: WeatherData, pending, error } = useFetch(() => 'https://api.open-m
   }
 });
 
-function getForecastByDay(day: number): WeatherDataDaily {
-  let dailyForecast: WeatherDataDaily;
+const weatherForecastByDays: ComputedRef<WeatherForecastByDay[]> = computed<WeatherForecastByDay[]>(() => {
+    let dailyForecast: WeatherForecastByDay[] = [];
+    if (weatherData.value?.daily) {
+       for (let i = 0; i < weatherData.value?.daily.time.length; i++) {
+          let daily: WeatherDataDaily = weatherData.value.daily;
+          console.log(daily)
+          dailyForecast.push({
+            time: daily.time[i],
+            temperature_2m_max: daily.temperature_2m_max[i],
+            temperature_2m_min: daily.temperature_2m_min[i],
+            sunrise: daily.sunrise[i],
+            sunset: daily.sunset[i],
+            daylight_duration: daily.daylight_duration[i],
+            rain_sum: daily.rain_sum[i],
+            showers_sum: daily.showers_sum[i],
+          });
+        }
+    }
+    return dailyForecast;
+})
 
-}
+/*const weatherForecastByDays: any = computed(() => {
+  let dailyForecast: any = weatherData.value.daily.sunrise[1];
+  return dailyForecast;
+})*/
 
 </script>
 
 <template>
 <div>
   <h1>Weather Data</h1>
-  {{ WeatherData }}
+  {{ weatherData }}
   {{ error }}
 
-  <div v-for="(day, key) in WeatherData['daily'] as WeatherDataDaily">
-    {{ key }}
-    <div v-for="value in day" >
-      {{ value }}
-    </div>
+  <input type="number" v-model="inputLatitude" placeholder="Latitude">
+  <input type="number" v-model="inputLongitude" placeholder="Longitude">
+
+
+
+  <p>Weather by Days</p>
+  <div v-for="day in weatherForecastByDays">
+    <p>{{ day.time }}</p>
+    <p>{{ day.temperature_2m_max }}</p>
+    <p>{{ day.temperature_2m_min }}</p>
+    <p>{{ day.sunrise }}</p>
+    <p>{{ day.sunset }}</p>
+    <p>{{ day.daylight_duration }}</p>
+    <p>{{ day.rain_sum }}</p>
+    <p>{{ day.showers_sum }}</p>
   </div>
 </div>
 </template>
