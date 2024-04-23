@@ -61,19 +61,37 @@ const weatherForecastByDays: ComputedRef<WeatherForecastByDay[]> = computed<Weat
 
 
   <p>Weather by Days</p>
-  <div v-for="day in weatherForecastByDays">
-    <p>{{ day.time }}</p>
-    <p>{{ day.temperature_2m_max }}</p>
-    <p>{{ day.temperature_2m_min }}</p>
-    <p>{{ day.sunrise }}</p>
-    <p>{{ day.sunset }}</p>
-    <p>{{ day.daylight_duration }}</p>
-    <p>{{ day.rain_sum }}</p>
-    <p>{{ day.showers_sum }}</p>
+  <div class="section__weather-card">
+    <div v-for="day in weatherForecastByDays" class="weather-card__container">
+      <p>Datum: {{ day.time }}</p>
+      <p>Maximale Temperatur: {{ day.temperature_2m_max }}</p>
+      <p>Minimale Temperatur: {{ day.temperature_2m_min }}</p>
+      <p>Sonnenaufgang: {{ day.sunrise }}</p>
+      <p>Sonnenuntergang: {{ day.sunset }}</p>
+      <p>Anzahl Sonnenstunden: {{ day.daylight_duration }}</p>
+      <p>Regen Summe: {{ day.rain_sum }}</p>
+      <p>Showe Summe: {{ day.showers_sum }}</p>
+    </div>
   </div>
 </div>
 </template>
 
 <style scoped>
+
+.section__weather-card {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.weather-card__container {
+  border: 1px solid black;
+  border-radius: 10px;
+  margin: 10px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
 
 </style>
