@@ -2,14 +2,22 @@
 import type {WeatherData, WeatherDataDaily} from "~/types/WeatherData";
 import type {WeatherForecastByDay} from "~/types/WeatherForecastByDay";
 import type {ComputedRef} from "vue";
+import locationCoordinates, {type LocationCoordinates} from "~/types/LocationCoordinates";
 
-const inputLatitude = ref(52.52);
-const inputLongitude = ref(13.41);
+const selectedLocation = ref<LocationCoordinates>();
+
+const latitude: ComputedRef<number | undefined> = computed(() => {
+  return selectedLocation.value?.coordinates.latitude;
+})
+
+const longitude: ComputedRef<number | undefined> = computed(() => {
+  return selectedLocation.value?.coordinates.longitude;
+})
 
 const { data: weatherData, pending, error } = useFetch<WeatherData>(() => 'https://api.open-meteo.com/v1/forecast', {
   query: {
-    latitude: inputLatitude,
-    longitude: inputLongitude,
+    latitude: latitude,
+    longitude: longitude,
     current: 'temperature_2m,relative_humidity_2m,is_day,rain,showers,snowfall',
     daily: 'temperature_2m_max,temperature_2m_min,sunrise,sunset,daylight_duration,rain_sum,showers_sum',
     timezone: 'Europe/Berlin',
@@ -38,11 +46,6 @@ const weatherForecastByDays: ComputedRef<WeatherForecastByDay[]> = computed<Weat
     return dailyForecast;
 })
 
-/*const weatherForecastByDays: any = computed(() => {
-  let dailyForecast: any = weatherData.value.daily.sunrise[1];
-  return dailyForecast;
-})*/
-
 </script>
 
 <template>
@@ -51,8 +54,9 @@ const weatherForecastByDays: ComputedRef<WeatherForecastByDay[]> = computed<Weat
   {{ weatherData }}
   {{ error }}
 
-  <input type="number" v-model="inputLatitude" placeholder="Latitude">
-  <input type="number" v-model="inputLongitude" placeholder="Longitude">
+  <select v-model="selectedLocation">
+    <option v-for="location in locationCoordinates" :value="location">{{ location.name }}</option>
+  </select>
 
 
 
