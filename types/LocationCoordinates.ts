@@ -21,6 +21,20 @@ const locationCoordinates: LocationCoordinates[] = [
             longitude: 2.35
         }
     },
+    {
+        name: "New York",
+        coordinates: {
+            latitude: 40.71,
+            longitude: -74.00
+        }
+    },
+    {
+        name: "Medellin",
+        coordinates: {
+            latitude: 6.25,
+            longitude: -75.56
+        }
+    }
 ];
 
 export default locationCoordinates;
