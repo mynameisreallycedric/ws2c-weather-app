@@ -26,6 +26,7 @@ export interface WeatherCurrentUnits {
 export interface WeatherDataCurrent {
     time: number,
     interval: number,
+    weather_code: number,
     temperature_2m: number,
     relative_humidity_2m: number,
     is_day: number,
@@ -36,6 +37,7 @@ export interface WeatherDataCurrent {
 
 export interface WeatherDataDaily {
     time: Date[],
+    weather_code: number[],
     temperature_2m_max: number[],
     temperature_2m_min: number[],
     sunrise: string[],

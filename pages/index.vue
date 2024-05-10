@@ -19,8 +19,8 @@ const { data: weatherData, pending, error } = useFetch<WeatherData>(() => 'https
   query: {
     latitude: latitude,
     longitude: longitude,
-    current: 'temperature_2m,relative_humidity_2m,is_day,rain,showers,snowfall',
-    daily: 'temperature_2m_max,temperature_2m_min,sunrise,sunset,daylight_duration,rain_sum,showers_sum',
+    current: 'weather_code,temperature_2m,relative_humidity_2m,is_day,rain,showers,snowfall',
+    daily: 'weather_code,temperature_2m_max,temperature_2m_min,sunrise,sunset,daylight_duration,rain_sum,showers_sum',
     timezone: 'Europe/Berlin',
     forecast_days: 3,
   }
@@ -34,6 +34,7 @@ const weatherForecastByDays: ComputedRef<WeatherForecastByDay[]> = computed<Weat
           console.log(daily)
           dailyForecast.push({
             time: daily.time[i],
+            weather_code: daily.weather_code[i],
             temperature_2m_max: daily.temperature_2m_max[i],
             temperature_2m_min: daily.temperature_2m_min[i],
             sunrise: daily.sunrise[i],

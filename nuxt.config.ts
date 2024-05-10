@@ -8,8 +8,10 @@ export default defineNuxtConfig({
     port: 3999
   },
 
+  css: ["@/assets/scss/main.scss"],
+
   image: {
-    dir: 'assets/images'
+    dir: 'assets'
   },
 
   modules: ["@nuxt/image"]
