@@ -52,19 +52,20 @@ const weatherForecastByDays: ComputedRef<WeatherForecastByDay[]> = computed<Weat
 
 <template>
 <div>
-  <h1>Weather Data</h1>
-  {{ weatherData }}
-  {{ error }}
+  <div class="header">
+    <h1>Weather Data</h1>
 
-  <select v-model="selectedLocation">
-    <option v-for="location in locationCoordinates" :value="location">{{ location.name }}</option>
-  </select>
+    <span clasS="selection">
+      <p>So wird das Wetter in: </p>
+      <select v-model="selectedLocation">
+        <option v-for="location in locationCoordinates" :value="location">{{ location.name }}</option>
+      </select>
+    </span>
+  </div>
 
-
-
-  <p>Weather by Days</p>
   <div class="section__weather-card">
-    <div v-for="day in weatherForecastByDays">
+    <div class="weather-card" v-for="day in weatherForecastByDays" >
+      <h3>{{ new Date(day.time).toLocaleDateString() }}</h3>
       <WeatherCard :weatherForecast="day"></WeatherCard>
     </div>
   </div>
@@ -77,6 +78,32 @@ const weatherForecastByDays: ComputedRef<WeatherForecastByDay[]> = computed<Weat
   width: 100%;
   display: flex;
   justify-content: center;
+  gap: 1.5rem;
+}
+
+.weather-card {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem 2rem 0 2rem;
+}
+
+.selection {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+
+  p {
+    margin: 0;
+  }
 }
 
 

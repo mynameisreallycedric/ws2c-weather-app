@@ -8,7 +8,7 @@ interface Props {
 const props = defineProps<Props>();
 
 const weatherCode = computed(() => ({
-  sunny: ( props.weatherForecast.weather_code > 0 && props.weatherForecast.weather_code < 2 ),
+  sunny: ( props.weatherForecast.weather_code >= 0 && props.weatherForecast.weather_code < 2 ),
   cloudy: ( props.weatherForecast.weather_code >= 2 && props.weatherForecast.weather_code <= 67 ),
   rainy: ( props.weatherForecast.weather_code > 67 && props.weatherForecast.weather_code <= 82 ),
   snowy: ( props.weatherForecast.weather_code > 82)
@@ -40,13 +40,13 @@ console.log("weathercode" + weatherCode)
         </div>
         <div class="weather-card_sun">
           <div class="weather-card__icon-container">
-            <NuxtImg width="16" height="16" src="icons/sunrise.svg"></NuxtImg><p>{{ weatherForecast.sunrise }}</p>
+              <NuxtImg width="20" height="20" src="icons/sunrise.svg"></NuxtImg><p>{{ new Date(weatherForecast.sunrise).toLocaleTimeString() }}</p>
           </div>
           <div class="weather-card__icon-container">
-            <NuxtImg width="16" height="16" src="icons/sundown.svg"></NuxtImg><p>{{ weatherForecast.sunset }}</p>
+            <NuxtImg width="20" height="20" src="icons/sundown.svg"></NuxtImg><p>{{ new Date(weatherForecast.sunset).toLocaleTimeString() }}</p>
           </div>
           <div class="weather-card__icon-container">
-            <NuxtImg width="16" height="16" src="icons/sun.svg"></NuxtImg><p>{{ weatherForecast.daylight_duration }}</p>
+            <NuxtImg width="20" height="20" src="icons/sun.svg"></NuxtImg><p>{{ (weatherForecast.daylight_duration / 3600).toFixed() }} h</p>
           </div>
         </div>
       </div>
@@ -56,42 +56,50 @@ console.log("weathercode" + weatherCode)
 <style scoped>
 .weather-card__container {
   border: 1px solid black;
-  border-radius: 10px;
+  border-radius: 30px;
+  box-shadow: 10px 10px 40px 0px rgba(0, 0, 0, 0.25);
+
   margin: 10px;;
   flex-direction: column;
   align-items: start;
   display: flex;
   position: relative;
   padding: 0;
-  height: 650px;
+  height: 600px;
   width: 430px;
   overflow: hidden;
 }
 
 .weather-card__maxTemp {
-  font-size: 180px;
+  font-size: 170px;
   font-family: 'Inter Bold';
+  padding: 0;
 }
 
 .weather-card_sun {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
+  padding: 15px 15px 0 15px;
 }
 
 .weather-card__temp {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
+  padding: 15px 15px 0 15px;
 }
 
 .weather-card__temp-right {
   display: flex;
   flex-direction: column;
-  padding: 2rem 0 2rem 3rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
 }
 
 .weather-card__icon-container {
   display: inline-flex;
-  gap: 5px;
+  gap: 1rem ;
 }
 
 .weather-card__bottom {
