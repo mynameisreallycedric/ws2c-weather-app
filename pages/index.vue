@@ -93,6 +93,11 @@ const weatherForecastByDays: ComputedRef<WeatherForecastByDay[]> = computed<Weat
   display: flex;
   flex-direction: column;
   margin: 1rem 2rem 0 2rem;
+
+  h1 {
+    margin-bottom: 0.5rem;
+  }
+
 }
 
 .selection {
