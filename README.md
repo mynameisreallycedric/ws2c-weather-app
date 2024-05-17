@@ -5,7 +5,7 @@ Für den Workshop ws2c habe ich mich mit TypeScript beschäftigt.
 Nach dem Abschluss eines Online Lernkurses habe ich mich dann dazu entschieden folgendes Web Projekt umzusetzen um das gelernte anwenden zu können.
 
 Mit dem WebApp kann eine Wettervorhersage über drei Tage für auswählbare Orte angezeigt werden.
-Der Fokus lag dabei auf der Benützung einer öffentliche API und der typisierung mittels TypeScript.
+Der Fokus lag dabei auf der Benützung einer öffentlichen API und der typisierung mittels TypeScript.
 
 ![Demo](.doc/images/Demo.gif)
 
@@ -23,9 +23,10 @@ Für die Umsetzung des FrontEnds wurden die folgenden Technologien verwendet:
 - Vue.JS
 - Nuxt
 - TypeScript
+- SCSS
 - Vite
 
-# Workshop - TypeScript Focus
+# TypeScript Focus & Details
 
 ## TypeScript used in Project
 Die verwendeten Types sind in dem Ordner [types](/types) abgelegt.
@@ -46,8 +47,11 @@ export interface WeatherForecastByDay {
 }
 ```
 
-### Course
-Während der Lernphase des Workshops habe ich den folgenden Kurs durchgearbeitet
+## Data Fetching
+Die Daten von der API werden direkt in der [index](/pages/index.vue) Page gefetched. Auf eine separate Auslagerung wurde für dieses Projekt verzichtet.
+
+## Course
+Während der Lernphase des Workshops habe ich den folgenden Kurs durchgearbeitet.
 Dieser eignet sich sehr gut für den Einstieg in TypeScript und ist sogar Kostenlos verwendbar.
 
 [Codecademy - TypeScript Kurs](https://www.codecademy.com/learn/learn-typescript)
