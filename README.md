@@ -1,75 +1,45 @@
-# Nuxt 3 Minimal Starter
+# Weather Data App for ws2C Workshop
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+## Brief
+
+
+
+## Data Source
+
+
+## Structure
+
+## Technologies
+
+
+
+
+# Workshop - TypeScript Focus
+
+## TypeScript used in Project
+
+### Course
+
+
+
+# Run Project
 
 ## Setup
 
-Make sure to install the dependencies:
+Installiere alle Dependencies mit folgendem Befehl:
 
 ```bash
 # npm
 npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
 ```
 
 ## Development Server
 
-Start the development server on `http://localhost:3000`:
+Starte den lokalen Dev-Server, erreichbar unter folgender URL `http://localhost:3999`:
 
 ```bash
 # npm
 npm run dev
-
-# pnpm
-pnpm run dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
 ```
 
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm run build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm run preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+© Cédric Wagner 2024

@@ -8,8 +8,8 @@ interface Props {
 const props = defineProps<Props>();
 
 const weatherCode = computed(() => ({
-  sunny: props.weatherForecast.weather_code >= 0 && props.weatherForecast.weather_code < 2,
-  cloudy: props.weatherForecast.weather_code >= 2 && props.weatherForecast.weather_code <= 67,
+  sunny: props.weatherForecast.weather_code >= 0 && props.weatherForecast.weather_code <= 2,
+  cloudy: props.weatherForecast.weather_code > 2 && props.weatherForecast.weather_code <= 67,
   rainy: props.weatherForecast.weather_code > 67
 }));
 

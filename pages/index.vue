@@ -9,11 +9,11 @@ const selectedLocation = ref<LocationCoordinates>();
 
 const latitude: ComputedRef<number | undefined> = computed(() => {
   return selectedLocation.value?.coordinates.latitude;
-})
+});
 
 const longitude: ComputedRef<number | undefined> = computed(() => {
   return selectedLocation.value?.coordinates.longitude;
-})
+});
 
 const { data: weatherData, pending, error } = useFetch<WeatherData>(() => 'https://api.open-meteo.com/v1/forecast', {
   query: {
