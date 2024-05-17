@@ -1,7 +1,7 @@
 # Weather Data App for ws2C Workshop
 
 ## Brief
-
+![Demo](.doc/images/Demo.gif)
 
 
 ## Data Source
