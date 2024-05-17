@@ -8,10 +8,10 @@ interface Props {
 const props = defineProps<Props>();
 
 const weatherCode = computed(() => ({
-  sunny: ( props.weatherForecast.weather_code >= 0 && props.weatherForecast.weather_code < 2 ),
-  cloudy: ( props.weatherForecast.weather_code >= 2 && props.weatherForecast.weather_code <= 67 ),
-  rainy: ( props.weatherForecast.weather_code > 67 )
-}))
+  sunny: props.weatherForecast.weather_code >= 0 && props.weatherForecast.weather_code < 2,
+  cloudy: props.weatherForecast.weather_code >= 2 && props.weatherForecast.weather_code <= 67,
+  rainy: props.weatherForecast.weather_code > 67
+}));
 
 console.log("weathercode" + weatherCode)
 
@@ -22,7 +22,7 @@ console.log("weathercode" + weatherCode)
       <div>
         <NuxtImg v-if="weatherCode.sunny" class="weather-card__image" src="images/sun.png"></NuxtImg>
         <NuxtImg v-if="weatherCode.cloudy" class="weather-card__image" src="images/sunwithclouds.png"></NuxtImg>
-        <NuxtImg v-if="weatherCode.rainy" class="weather-card__image" src="images/rainycloud.png"></NuxtImg>
+        <NuxtImg v-if="weatherCode.rainy" style="margin-top: 45%" class="weather-card__image" src="images/rainycloud.png"></NuxtImg>
       </div>
       <div class="weather-card__top" :class="weatherCode">
       </div>
