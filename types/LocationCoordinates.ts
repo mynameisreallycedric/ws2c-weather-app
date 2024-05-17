@@ -34,6 +34,20 @@ const locationCoordinates: LocationCoordinates[] = [
             latitude: 6.25,
             longitude: -75.56
         }
+    },
+    {
+        name: "Sydney",
+        coordinates: {
+            latitude: -33.86,
+            longitude: 151.20
+        }
+    },
+    {
+        name: "Havana",
+        coordinates: {
+            latitude: 23.13,
+            longitude: -82.38
+        }
     }
 ];
 

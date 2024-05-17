@@ -13,8 +13,6 @@ const weatherCode = computed(() => ({
   rainy: props.weatherForecast.weather_code > 67
 }));
 
-console.log("weathercode" + weatherCode)
-
 </script>
 
 <template>
@@ -109,9 +107,9 @@ console.log("weathercode" + weatherCode)
   margin-top: auto;
   z-index: 10;
   width: 100%;
-  fill: rgba(255, 255, 255, 0.30);
+  fill: rgba(255, 255, 255, 0.50);
   filter: drop-shadow(0px 4px 24px rgba(0, 0, 0, 0.25));
-  backdrop-filter: blur(7.5px);
+  backdrop-filter: blur(8px);
   height: 50%;
 }
 
