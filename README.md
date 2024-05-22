@@ -5,7 +5,7 @@ Für den Workshop ws2c habe ich mich mit TypeScript beschäftigt.
 Nach dem Abschluss eines Online Lernkurses habe ich mich dann dazu entschieden folgendes Web Projekt umzusetzen um das gelernte anwenden zu können.
 
 Mit dem WebApp kann eine Wettervorhersage über drei Tage für auswählbare Orte angezeigt werden.
-Der Fokus lag dabei auf der Benützung einer öffentlichen API und der typisierung mittels TypeScript.
+Der Fokus lag dabei auf der Verwendung einer öffentlichen API und der typisierung mittels TypeScript.
 
 ![Demo](.doc/images/Demo.gif)
 
