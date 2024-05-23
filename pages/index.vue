@@ -31,7 +31,6 @@ const weatherForecastByDays: ComputedRef<WeatherForecastByDay[]> = computed<Weat
     if (weatherData.value?.daily) {
        for (let i = 0; i < weatherData.value?.daily.time.length; i++) {
           let daily: WeatherDataDaily = weatherData.value.daily;
-          console.log(daily)
           dailyForecast.push({
             time: daily.time[i],
             weather_code: daily.weather_code[i],
@@ -56,7 +55,7 @@ const weatherForecastByDays: ComputedRef<WeatherForecastByDay[]> = computed<Weat
     <h1>Weather Data</h1>
 
     <span clasS="selection">
-      <p>So wird das Wetter in: </p>
+      So wird das Wetter in:
       <select v-model="selectedLocation">
         <option v-for="location in locationCoordinates" :value="location">{{ location.name }}</option>
       </select>
