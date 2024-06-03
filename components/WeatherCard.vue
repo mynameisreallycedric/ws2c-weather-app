@@ -1,12 +1,18 @@
 <script setup lang="ts">
 import type {WeatherForecastByDay} from "~/types/WeatherForecastByDay";
 
+/*
+receives the weather data for one day as a property
+ */
 interface Props {
   weatherForecast: WeatherForecastByDay
 }
 
 const props = defineProps<Props>();
 
+/*
+calculates the weather state based on the weather code provided by the API
+ */
 const weatherCode = computed(() => ({
   sunny: props.weatherForecast.weather_code >= 0 && props.weatherForecast.weather_code <= 2,
   cloudy: props.weatherForecast.weather_code > 2 && props.weatherForecast.weather_code <= 67,

@@ -6,7 +6,9 @@ import locationCoordinates, {type LocationCoordinates} from "~/types/LocationCoo
 import WeatherCard from "~/components/WeatherCard.vue";
 
 const selectedLocation = ref<LocationCoordinates>();
-
+/*
+computes the longitude and latitude when the selected input changes
+ */
 const latitude: ComputedRef<number | undefined> = computed(() => {
   return selectedLocation.value?.coordinates.latitude;
 });
@@ -15,6 +17,9 @@ const longitude: ComputedRef<number | undefined> = computed(() => {
   return selectedLocation.value?.coordinates.longitude;
 });
 
+/*
+collects the weather data when latitude and longitude are changing
+ */
 const { data: weatherData, pending, error } = useFetch<WeatherData>(() => 'https://api.open-meteo.com/v1/forecast', {
   query: {
     latitude: latitude,
@@ -25,7 +30,9 @@ const { data: weatherData, pending, error } = useFetch<WeatherData>(() => 'https
     forecast_days: 3,
   }
 });
-
+/*
+splits the received data from the API into weather data by day
+ */
 const weatherForecastByDays: ComputedRef<WeatherForecastByDay[]> = computed<WeatherForecastByDay[]>(() => {
     let dailyForecast: WeatherForecastByDay[] = [];
     if (weatherData.value?.daily) {
